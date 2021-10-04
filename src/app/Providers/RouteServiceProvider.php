@@ -59,6 +59,7 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(static function (Router $router) {
                 require base_path('routes/api/v1/public/auth.php');
+                require base_path('routes/api/v1/public/account.php');
             });
     }
 

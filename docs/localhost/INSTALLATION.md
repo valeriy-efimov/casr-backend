@@ -25,7 +25,7 @@ composer install
 
 - setup environment configuration
 ```bash
-cp .env.example.localhost .env
+cp .env.example .env
 ```
 
 - run this code for create the symbolic link
