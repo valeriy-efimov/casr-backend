@@ -1,4 +1,4 @@
-# Installation on localhost
+# Installation on docker
 
 -  setup development domains
 ```bash
