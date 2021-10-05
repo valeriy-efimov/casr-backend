@@ -61,7 +61,7 @@ class ClientCreator
         $client->phone_no2      = $model->getPhoneNo2();
         $client->zip            = $model->getZipCode();
         $client->start_validity = $now;
-        $client->end_validity   = $now->addDays(15);
+        $client->end_validity   = $now->clone()->addDays(15);
 
         $client->save();
 

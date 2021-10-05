@@ -38,7 +38,7 @@ class ClientFactory extends Factory
             'phone_no2'      => $this->faker->phoneNumber,
             'zip'            => $this->faker->postcode,
             'start_validity' => $now,
-            'end_validity'   => $now->addDays(15),
+            'end_validity'   => $now->clone()->addDays(15),
             'status'         => StatusEnum::active(),
         ];
     }
