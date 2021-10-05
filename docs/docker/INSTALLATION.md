@@ -29,7 +29,6 @@ docker-compose up --build
 - enter web container and install dependencies inside of the container
 ```bash
 docker-compose exec web bash
-npm install
 composer install
 ```
 
