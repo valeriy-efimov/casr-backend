@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
@@ -56,8 +57,9 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware(['api'])
             ->domain($apiDomain)
             ->namespace($this->namespace)
-            ->group(static function () {
+            ->group(static function (Router $router) {
                 require base_path('routes/api/v1/public/auth.php');
+                require base_path('routes/api/v1/public/account.php');
             });
     }
 

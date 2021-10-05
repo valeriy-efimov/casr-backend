@@ -25,21 +25,21 @@ composer install
 
 - setup environment configuration
 ```bash
-cp .env.example.localhost .env
-```
-
-- run this code for create the symbolic link
-```bash
-php artisan storage:link
+cp .env.example .env
 ```
 
 - setup database
 ```bash
 php artisan migrate
-php artisan db:seed
 ```
 
 - configure permissions 
 ```bash
 chmod 777 -R storage bootstrap/cache
+```
+
+- run tests
+
+```bash
+php artisan test
 ```
