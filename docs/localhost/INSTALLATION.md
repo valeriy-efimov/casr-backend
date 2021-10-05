@@ -28,15 +28,9 @@ composer install
 cp .env.example .env
 ```
 
-- run this code for create the symbolic link
-```bash
-php artisan storage:link
-```
-
 - setup database
 ```bash
 php artisan migrate
-php artisan db:seed
 ```
 
 - configure permissions 
