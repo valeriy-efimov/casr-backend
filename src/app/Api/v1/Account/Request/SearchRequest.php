@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\v1\Account\Request;
 
+use App\Enum\SortClientEnum;
 use App\Enum\StatusEnum;
 use App\Repositories\Client\SearchClientModel;
 use App\Validation\Rule\EnumIn;
@@ -17,20 +18,19 @@ class SearchRequest extends FormRequest implements SearchClientModel
     public function rules(): array
     {
         return [
-            'page'           => ['nullable', 'integer'],
-            'name'           => ['nullable', 'string', 'max:100'],
-            'address1'       => ['nullable', 'string', 'max:65535'],
-            'address2'       => ['nullable', 'string', 'max:65535'],
-            'city'           => ['nullable', 'string', 'max:100'],
-            'state'          => ['nullable', 'string', 'max:100'],
-            'country'        => ['nullable', 'string', 'max:100'],
-            'zipCode'        => ['nullable', 'string', 'max:20'],
-            'phoneNo1'       => ['nullable', 'min:8', 'max:20'],
-            'phoneNo2'       => ['nullable', 'min:8', 'max:20'],
-            'status'         => ['nullable', new EnumIn(StatusEnum::class)],
-            'user.firstName' => ['nullable', 'string', 'max:50'],
-            'user.lastName'  => ['nullable', 'string', 'max:50'],
-            'user.phone'     => ['nullable', 'min:8', 'max:20'],
+            'page'     => ['nullable', 'integer'],
+            'name'     => ['nullable', 'string', 'max:100'],
+            'address1' => ['nullable', 'string', 'max:255'],
+            'address2' => ['nullable', 'string', 'max:255'],
+            'city'     => ['nullable', 'string', 'max:100'],
+            'state'    => ['nullable', 'string', 'max:100'],
+            'country'  => ['nullable', 'string', 'max:100'],
+            'zipCode'  => ['nullable', 'string', 'max:20'],
+            'phoneNo1' => ['nullable', 'min:8', 'max:20'],
+            'phoneNo2' => ['nullable', 'min:8', 'max:20'],
+            'status'   => ['nullable', new EnumIn(StatusEnum::class)],
+            'sort'     => ['nullable', new EnumIn(SortClientEnum::class)],
+            'order'    => ['string', 'in:asc,desc'],
         ];
     }
 
@@ -124,44 +124,21 @@ class SearchRequest extends FormRequest implements SearchClientModel
         return $this->input('phoneNo2');
     }
 
-
     /**
-     * @return string|null
+     * @return \App\Enum\SortClientEnum|null
      */
-    public function getFirstName(): ?string
+    public function getSort(): ?SortClientEnum
     {
-        return $this->input('user.firstName');
+        $type = $this->input('sort');
+
+        return isset($type) ? SortClientEnum::make($type) : null;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getLastName(): ?string
+    public function getOrder(): string
     {
-        return $this->input('user.lastName');
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->input('user.email');
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPassword(): ?string
-    {
-        return $this->input('user.password');
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPhone(): ?string
-    {
-        return $this->input('user.phone');
+        return $this->input('order', 'asc');
     }
 }

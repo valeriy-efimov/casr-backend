@@ -69,4 +69,18 @@ abstract class StringEnum extends AbstractEnum
     {
         return $this->value;
     }
+
+    /**
+     * @return string
+     *
+     */
+    final public function getName(): string
+    {
+        static $values;
+        if (!$values) {
+            $values = static::getValues();
+        }
+
+        return (string)array_search($this->value, $values, true);
+    }
 }

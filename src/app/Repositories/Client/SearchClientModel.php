@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories\Client;
 
+use App\Enum\SortClientEnum;
 use App\Enum\StatusEnum;
 
 interface SearchClientModel
@@ -12,21 +13,6 @@ interface SearchClientModel
      * @return int
      */
     public function getPage(): int;
-
-    /**
-     * @return string|null
-     */
-    public function getFirstName(): ?string;
-
-    /**
-     * @return string|null
-     */
-    public function getLastName(): ?string;
-
-    /**
-     * @return string|null
-     */
-    public function getPhone(): ?string;
 
     /**
      * @return string|null
@@ -77,4 +63,14 @@ interface SearchClientModel
      * @return string|null
      */
     public function getPhoneNo2(): ?string;
+
+    /**
+     * @return \App\Enum\SortClientEnum|null
+     */
+    public function getSort(): ?SortClientEnum;
+
+    /**
+     * @return string
+     */
+    public function getOrder(): string;
 }
