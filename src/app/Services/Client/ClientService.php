@@ -27,6 +27,7 @@ class ClientService implements ClientServiceInterface
      * @param \App\Models\Client\CreateClientModelInterface $model
      *
      * @return \App\Models\Client\Client
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function create(CreateClientModelInterface $model): Client
     {

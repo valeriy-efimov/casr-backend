@@ -49,6 +49,6 @@ class ClientRepository implements ClientRepositoryInterface
         }
 
         return $client
-            ->forPage($page)->paginate(3);
+            ->forPage($page)->paginate(10);
     }
 }

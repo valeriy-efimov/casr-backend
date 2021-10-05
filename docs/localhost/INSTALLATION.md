@@ -43,3 +43,9 @@ php artisan db:seed
 ```bash
 chmod 777 -R storage bootstrap/cache
 ```
+
+- run tests
+
+```bash
+php artisan test
+```

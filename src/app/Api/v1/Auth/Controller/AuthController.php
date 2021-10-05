@@ -51,6 +51,7 @@ class AuthController extends Controller
 
         $this->userService->create($client, $request);
         $this->databaseManager->commit();
+
         return response()->json(['result' => true]);
     }
 }

@@ -6,6 +6,8 @@ namespace App\Models\Client;
 
 use App\CastsAttributes\StatusCast;
 use App\Models\User\User;
+use Database\Factories\ClientFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -32,6 +34,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Client extends Model
 {
+    use HasFactory;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -73,6 +77,16 @@ class Client extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Database\Factories\ClientFactory
+     */
+    protected static function newFactory(): ClientFactory
+    {
+        return ClientFactory::new();
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

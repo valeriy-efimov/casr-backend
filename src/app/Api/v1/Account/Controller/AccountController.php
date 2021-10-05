@@ -54,7 +54,7 @@ class AccountController extends Controller
                 'perPage'     => $result->perPage(),
                 'to'          => $result->lastItem(),
                 'total'       => $result->total(),
-                'count'       => $result->perPage(),
+                'count'       => count($result->items()),
             ],
         ]);
     }

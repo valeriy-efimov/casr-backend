@@ -4,6 +4,7 @@ namespace App\Models\User;
 
 use App\CastsAttributes\StatusCast;
 use App\Models\Client\Client;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,7 +30,7 @@ use Spatie\Sluggable\SlugOptions;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasSlug;
+    use HasFactory, Notifiable, HasSlug, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -77,6 +78,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Database\Factories\UserFactory
+     */
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
+
+    /**
      * Get the options for generating the slug.
      */
     public function getSlugOptions(): SlugOptions
@@ -87,16 +98,6 @@ class User extends Authenticatable
             })
             ->saveSlugsTo('profile_uri');
     }
-
-//    /**
-//     * Get the route key for the model.
-//     *
-//     * @return string
-//     */
-//    public function getRouteKeyName(): string
-//    {
-//        return 'profile_uri';
-//    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
